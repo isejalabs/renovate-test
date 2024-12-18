@@ -24,7 +24,11 @@
     ]
   },
   "kubernetes": {
-    "fileMatch": ["(^|/)k8s/.+\\.yaml$"]
+    "fileMatch": [
+      "(^|/)k8s/.+\\.yaml$",
+      "(^|/)regex/.+\\.yaml$",
+      "(^|/)vanilla/.+\\.yaml$"
+    ]
   },
   "customManagers": [
     {
