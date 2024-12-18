@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ssh
+  namespace: ssh
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: ssh
+          image: lscr.io/linuxserver/openssh-server:latest@sha256:a25f20698d1fe289934addf05dd3575bb032885ae3f08adb9ac6bcc120cefebc
