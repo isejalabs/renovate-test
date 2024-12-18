@@ -1,0 +1,35 @@
+# Kubernetes
+k8s/**/charts/
+
+# SOPS
+.decrypted~*
+
+# playground
+*.bak
+
+# Talos
+clusterconfig
+
+# TerraForm/ToFu
+.terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+# *.lock.hcl
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terragrunt
+.terragrunt-cache
+
+# Proxmox
+*.qcow2
+*.raw
+
+# Misc
+output*
+*.cert
+*.key
