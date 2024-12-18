@@ -48,7 +48,6 @@
   "packageRules": [
     { "matchPackageNames": ["docker.io/mongo"], "allowedVersions": "<=7", "description": "keep mongodb at v7 due to unifi-network-controller" },
     {
-      "matchDatasources": ["docker"],
       "matchPackageNames": ["lscr.io/linuxserver/openssh-server"],
       "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)_p(?<patch>\\d+)-r(?<build>\\d)-ls(?<revision>.+)$"
     },
