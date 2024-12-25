@@ -29,7 +29,7 @@ spec:
       containers:
         - name: unifi-network-application
           # image: lscr.io/linuxserver/unifi-network-application:8.6.9-ls70@sha256:882e7c6e811a8c3cdd5f77ce752fc109a4f085217eedb695fdd717a42ada65fd
-          image: lscr.io/linuxserver/unifi-network-application:8.4.62-ls64
+          image: lscr.io/linuxserver/unifi-network-application:8.4.62-ls64@sha256:5349adad88b656b908b9e3e0d19c6e490152fd839b2267882822a97aa906d707
           env:
             - name: PUID
               value: '999'
