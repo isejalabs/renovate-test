@@ -56,7 +56,7 @@
       "versioning": "regex:^(?<compatibility>[a-z]*-|v)?(?<major>\\d+)\\.(?<minor>\d+)\\.(?<patch>\\d+)?(?:[\\.-]?(?<build>.*))?$"
     },
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest", "pinDigest"],
       "automerge": true
     },
     {
