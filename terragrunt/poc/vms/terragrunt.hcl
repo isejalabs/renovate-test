@@ -22,7 +22,7 @@ include "envcommon" {
 # environment at a time (e.g., qa -> stage -> prod).
 terraform {
   # source = "${include.envcommon.locals.base_source_url}?ref=v0.0.2"
-  source = "git::git@github.com:isejalabs/terraform-modules-test.git//modules/vms?ref=vms-v0.0.4"
+  source = "git::git@github.com:isejalabs/terraform-modules-test.git//modules/vms?ref=vms-v0.0.6"
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
