@@ -9,4 +9,4 @@ spec:
     spec:
       containers:
         - name: ssh
-          image: lscr.io/linuxserver/openssh-server:latest@sha256:3071d36cbcb79450b17578ac46bfd63f9cff08043020b8d8ec4c2b56e808c29b
+          image: lscr.io/linuxserver/openssh-server:latest@sha256:4a39a511ba2c5e4aa9eed24504563bc3944bfb3bcd5940717ff70d688830f95b
