@@ -1,69 +1,89 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:best-practices",
-    ":disableRateLimiting",
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:best-practices',
+    ':disableRateLimiting',
   ],
-  "rebaseWhen": "conflicted",
-  "assignees": [
-    "sebiklamar"
+  rebaseWhen: 'conflicted',
+  assignees: [
+    'sebiklamar',
   ],
-  "ignorePaths": ["_attic/**"],
-  "terragrunt": {
-    "versioning": "regex:^((?<compatibility>.*)-v|v*)(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$"
-  },
-  "additionalBranchPrefix": "{{packageFileDir}}/",
-  "prBodyColumns": [
-    "Package",
-    "Package file",
-    "Update",
-    "Change"
+  ignorePaths: [
+    '_attic/**',
   ],
-  "kustomize": {
-    "fileMatch": [
-      "(^|/)kustomization\\.ya?ml(\\.j2)?$"
-    ]
+  terragrunt: {
+    versioning: 'regex:^((?<compatibility>.*)-v|v*)(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$',
   },
-  "kubernetes": {
-    "fileMatch": [
-      "(^|/)k8s/.+\\.yaml$",
-      "(^|/)regex/.+\\.yaml$",
-      "(^|/)vanilla/.+\\.yaml$"
-    ]
+  additionalBranchPrefix: '{{packageFileDir}}/',
+  prBodyColumns: [
+    'Package',
+    'Package file',
+    'Update',
+    'Change',
+  ],
+  kustomize: {
+    managerFilePatterns: [
+      '/(^|/)kustomization\\.ya?ml(\\.j2)?$/',
+    ],
   },
-  "customManagers": [
+  kubernetes: {
+    managerFilePatterns: [
+      '/(^|/)k8s/.+\\.yaml$/',
+      '/(^|/)regex/.+\\.yaml$/',
+      '/(^|/)vanilla/.+\\.yaml$/',
+    ],
+  },
+  customManagers: [
     {
-      "customType": "regex",
-      "fileMatch": [
-        "\\.hcl$",
-        "\\.tf$",
-        "\\.tftpl$",
-        "\\.yaml$",
-        "\\.sh$"
+      customType: 'regex',
+      managerFilePatterns: [
+        '/\\.hcl$/',
+        '/\\.tf$/',
+        '/\\.tftpl$/',
+        '/\\.yaml$/',
+        '/\\.sh$/',
       ],
-      "matchStrings": [
-        "(?<currentValue>[\\w+\\.\\-]*)['\",;]*\\s*#\\s?renovate: (?<datasource>\\S+)=(?<depName>\\S+)\\s?(registry=(?<registryUrl>\\S+))?\\s?(versioning=(?<versioning>\\S+))?"
-      ]
-    }
+      matchStrings: [
+        '(?<currentValue>[\\w+\\.\\-]*)[\'",;]*\\s*#\\s?renovate: (?<datasource>\\S+)=(?<depName>\\S+)\\s?(registry=(?<registryUrl>\\S+))?\\s?(versioning=(?<versioning>\\S+))?',
+      ],
+    },
   ],
-  "packageRules": [
-    { "matchPackageNames": ["docker.io/mongo"], "allowedVersions": "<=7", "description": "keep mongodb at v7 due to unifi-network-controller" },
+  packageRules: [
     {
-      "matchPackageNames": ["lscr.io/linuxserver/openssh-server"],
-      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)_p(?<patch>\\d+)-r(?<build>\\d)-ls(?<revision>.+)$"
+      matchPackageNames: [
+        'docker.io/mongo',
+      ],
+      allowedVersions: '<=7',
+      description: 'keep mongodb at v7 due to unifi-network-controller',
     },
     {
-      "matchPackageNames": ["/^lscr.io\\/linuxserver\\/unifi-network-application\\//"],
-      "versioning": "regex:^(?<compatibility>[a-z]*-|v)?(?<major>\\d+)\\.(?<minor>\d+)\\.(?<patch>\\d+)?(?:[\\.-]?(?<build>.*))?$"
+      matchPackageNames: [
+        'lscr.io/linuxserver/openssh-server',
+      ],
+      versioning: 'regex:^(?<major>\\d+)\\.(?<minor>\\d+)_p(?<patch>\\d+)-r(?<build>\\d)-ls(?<revision>.+)$',
     },
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest", "pinDigest"],
-      "automerge": true
+      matchPackageNames: [
+        '/^lscr.io\\/linuxserver\\/unifi-network-application\\//',
+      ],
+      versioning: 'regex:^(?<compatibility>[a-z]*-|v)?(?<major>\\d+)\\.(?<minor>d+)\\.(?<patch>\\d+)?(?:[\\.-]?(?<build>.*))?$',
     },
     {
-      "matchDepTypes": ["devDependencies"],
-      "automerge": true
-    }
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+        'pin',
+        'digest',
+        'pinDigest',
+      ],
+      automerge: true,
+    },
+    {
+      matchDepTypes: [
+        'devDependencies',
+      ],
+      automerge: true,
+    },
   ],
-  "platformAutomerge": true
+  platformAutomerge: true,
 }
