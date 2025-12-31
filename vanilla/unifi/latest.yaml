@@ -28,7 +28,7 @@ spec:
         #   type: RuntimeDefault
       containers:
         - name: unifi-network-application
-          image: linuxserver/unifi-network-application:latest@sha256:0e7a91af1db0ef28ed13125dcdd78a95b4a461f546ace9be90e0a26c89d54ffa
+          image: linuxserver/unifi-network-application:latest@sha256:268340299e6a8a85c29800923e242c60ed7baa24557943f0ff5ec4ea52804232
           env:
             - name: PUID
               value: '999'
