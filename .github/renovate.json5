@@ -4,7 +4,6 @@
     'config:best-practices',
     ':disableRateLimiting',
     'github>ppat/homelab-ops-kubernetes-apps//.github/renovate/version-scheme',
-    ':semanticCommitScope(package)',
   ],
   rebaseWhen: 'conflicted',
   assignees: [
@@ -13,6 +12,7 @@
   ignorePaths: [
     '_attic/**',
   ],
+  semanticCommitScope: '{{parentDir}}',
   terragrunt: {
     versioning: 'regex:^((?<compatibility>.*)-v|v*)(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$',
   },
