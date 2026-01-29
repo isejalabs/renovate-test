@@ -12,6 +12,7 @@
   ignorePaths: [
     '_attic/**',
   ],
+  semanticCommitScope: '{{parentDir}}',
   terragrunt: {
     versioning: 'regex:^((?<compatibility>.*)-v|v*)(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$',
     semanticCommitScope: '{{packageFileDir}}',
