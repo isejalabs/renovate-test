@@ -12,10 +12,9 @@
   ignorePaths: [
     '_attic/**',
   ],
-  semanticCommitScope: '{{manager}}_{{parentDir}}',
+  semanticCommitScope: '{{parentDir}}',
   terragrunt: {
     versioning: 'regex:^((?<compatibility>.*)-v|v*)(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$',
-    semanticCommitScope: '{{packageFileDir}}',
   },
   additionalBranchPrefix: '{{packageFileDir}}/',
   prBodyColumns: [
@@ -86,6 +85,13 @@
         'devDependencies',
       ],
       automerge: true,
+    },
+    {
+      "description": "add semantic commit scope for terragrunt subsystems",
+      "matchFileNames": [
+        "terragrunt/**"
+      ],
+      "semanticCommitScope": "{{ lookup (split packageFileDir '/') 1 }}/{{ lookup (split packageFileDir '/') 2 }}"
     },
   ],
   platformAutomerge: true,
