@@ -4,7 +4,6 @@
     'config:best-practices',
     ':disableRateLimiting',
     'github>ppat/homelab-ops-kubernetes-apps//.github/renovate/version-scheme',
-    ':semanticCommits',
   ],
   rebaseWhen: 'conflicted',
   assignees: [
