@@ -6,6 +6,7 @@
     'github>ppat/homelab-ops-kubernetes-apps//.github/renovate/version-scheme',
   ],
   rebaseWhen: 'conflicted',
+  separateMinorPatch: true,
   ignorePaths: [
     '_attic/**',
   ],
