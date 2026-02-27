@@ -1,9 +1,12 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   extends: [
-    'config:best-practices',
-    ':disableRateLimiting',
-    'github>ppat/homelab-ops-kubernetes-apps//.github/renovate/version-scheme',
+    ":disableRateLimiting",
+    "config:best-practices",
+    "github>isejalabs/renovate-test//.github/renovate/labels.json5",
+    "github>isejalabs/renovate-test//.github/renovate/organize-semantic-scope.json5",
+    "github>isejalabs/renovate-test//.github/renovate/pin-versions.json5",
+    "github>isejalabs/renovate-test//.github/renovate/version-scheme.json5",
   ],
   rebaseWhen: 'conflicted',
   separateMinorPatch: true,
@@ -51,19 +54,6 @@
   packageRules: [
     {
       matchPackageNames: [
-        'docker.io/mongo',
-      ],
-      allowedVersions: '<=8',
-      description: 'keep mongodb at v8 due to unifi-network-controller',
-    },
-    {
-      matchPackageNames: [
-        'lscr.io/linuxserver/openssh-server',
-      ],
-      versioning: 'regex:^(?<major>\\d+)\\.(?<minor>\\d+)_p(?<patch>\\d+)-r(?<build>\\d)-ls(?<revision>.+)$',
-    },
-    {
-      matchPackageNames: [
         '/^lscr.io\\/linuxserver\\/unifi-network-application\\//',
       ],
       versioning: 'regex:^(?<compatibility>[a-z]*-|v)?(?<major>\\d+)\\.(?<minor>d+)\\.(?<patch>\\d+)?(?:[\\.-]?(?<build>.*))?$',
@@ -80,13 +70,6 @@
         'devDependencies',
       ],
       automerge: true,
-    },
-    {
-      "description": "add semantic commit scope for terragrunt subsystems",
-      "matchFileNames": [
-        "terragrunt/**"
-      ],
-      "semanticCommitScope": "{{ lookup (split packageFileDir '/') 1 }}/{{ lookup (split packageFileDir '/') 2 }}"
     },
   ],
   platformAutomerge: true,
