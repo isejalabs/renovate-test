@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: unifi-controller
+  namespace: unifi
+  annotations:
+    io.cilium/lb-ipam-ips: 192.168.8.20
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  selector:
+    app: unifi-controller
+  ports:
+    - name: https-alt
+      port: 8443
+      targetPort: web-admin
+    - name: device-comm
+      port: 8080
+      protocol: TCP
+    - name: stun
+      port: 3478
+      protocol: UDP
+    - name: unifi-disc
+      port: 10001
+      protocol: UDP
+    - name: secure-redirect
+      port: 8843
+      protocol: TCP
+    - name: http-redirect
+      port: 8880
+      protocol: TCP

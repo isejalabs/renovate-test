@@ -1,0 +1,15 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  namespace: unifi
+  labels:
+    app: mongodb
+spec:
+  template:
+    spec:
+      containers:
+        - name: mongodb
+          # track version in this environment explicitly
+          image: docker.io/mongo:8.0.18@sha256:ea2d3389d685f1cbd41cbad8c9d0fb1a7448ede26263cde4e5e61aa9050d7783

@@ -1,0 +1,9 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: external
+  namespace: gateway
+spec:
+  infrastructure:
+    annotations:
+      io.cilium/lb-ipam-ips: 10.8.2.83

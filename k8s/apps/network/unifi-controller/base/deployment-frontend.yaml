@@ -1,0 +1,109 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unifi-controller
+  namespace: unifi
+  labels:
+    app: unifi-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: unifi-controller
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      namespace: unifi
+      labels:
+        app: unifi-controller
+    spec:
+      nodeSelector:
+        topology.kubernetes.io/zone: pve4
+      securityContext:
+        runAsNonRoot: false
+        # runAsNonRoot: true
+        # runAsUser: 999
+        # runAsGroup: 999
+        # fsGroup: 999
+        # fsGroupChangePolicy: OnRootMismatch
+        # seccompProfile:
+        #   type: RuntimeDefault
+      containers:
+        - name: unifi-network-application
+          image: lscr.io/linuxserver/unifi-network-application:10.0.162@sha256:7948b8c2ca4cd9bf9e1839f3e399c320e0a8318cd54dc807c247f48702f4b157
+          env:
+            - name: PUID
+              value: '999'
+            - name: PGID
+              value: '999'
+            - name: TZ
+              value: Europe/Berlin
+            - name: MONGO_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret-sealed
+                  key: mongo_user
+            - name: MONGO_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret-sealed
+                  key: mongo_pass
+            - name: MONGO_HOST
+              value: mongodb
+            - name: MONGO_PORT
+              value: '27017'
+            - name: MONGO_DBNAME
+              value: unifidb
+            - name: MONGO_AUTHSOURCE
+              value: admin
+          resources:
+            requests:
+              cpu: 50m
+              memory: 500Mi
+            limits:
+              cpu: 1000m
+              memory: 1000Mi
+          ports:
+            # required
+            - name: web-admin
+              containerPort: 8443
+              protocol: TCP
+            # required
+            - name: speedtest
+              containerPort: 6789
+              protocol: TCP
+            # required
+            - name: device-comm
+              containerPort: 8080
+              protocol: TCP
+            # optional
+            - name: http-redirect
+              containerPort: 8880
+              protocol: TCP
+            # optional
+            - name: secure-redirect
+              containerPort: 8843
+              protocol: TCP
+            # required
+            - name: stun
+              containerPort: 3478
+              protocol: UDP
+            # optional
+            - name: snmp-trap
+              containerPort: 5514
+              protocol: UDP
+            # required
+            - name: unifi-disc
+              containerPort: 10001
+              protocol: UDP
+          volumeMounts:
+            - name: unifi-controller-data
+              mountPath: /config
+      volumes:
+        - name: unifi-controller-data
+          persistentVolumeClaim:
+            claimName: unifi-controller-data
+#    volumes:
+#      - /srv/docker-compose/hosts/unifi/data:/config
