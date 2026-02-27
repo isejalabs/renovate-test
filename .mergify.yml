@@ -1,1 +1,9 @@
 queue_rules: []
+pull_request_rules:
+  - name: Automatischer Merge für Dokumentationsänderungen
+    conditions:
+      - label=env:head             # PR muss dieses Label haben
+      - files~=^k8s/               # Alle geänderten Dateien müssen im Ordner 'docs/' liegen
+    actions:
+      merge:
+        method: squash             # Wähle merge, squash oder rebase
