@@ -8,6 +8,7 @@
         "patch",
       ],
       "automerge": true,
+      automergeType: "branch",
     },
     {
       matchDepTypes: [
