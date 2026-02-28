@@ -6,7 +6,8 @@ name: checkmk
 namespace: checkmk-agent
 repo: https://checkmk.github.io/checkmk_kube_agent
 releaseName: checkmk-kube-agent
-version: 1.9.0    # renovate: renovate: helm=checkmk-kube-agent registry=https://checkmk.github.io/checkmk_kube_agent
+version: 1.9.0    # renovate: github-releases=checkmk/checkmk_kube_agent
+
 ## do not use valuesFile as it's not inherited in overlays
 # valuesFile: values.yaml
 ## only inline values are inherited in overlays
@@ -19,6 +20,7 @@ valuesInline:
       limits:
         cpu: 100m
         memory: 120Mi
+  foo: 1.9.0    # renovate: renovate: helm=checkmk-kube-agent registry=https://checkmk.github.io/checkmk_kube_agent
 
   nodeCollector:
     # collect metrics also on control plane nodes

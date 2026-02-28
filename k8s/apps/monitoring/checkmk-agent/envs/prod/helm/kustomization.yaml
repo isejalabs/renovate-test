@@ -3,3 +3,11 @@ kind: Kustomization
 
 resources:
   - ../../../base/helm
+
+helmCharts:
+  - name: checkmk
+    version: 1.9.0
+    repo: https://checkmk.github.io/checkmk_kube_agent
+    releaseName: "checkmk-kube-agent"
+    namespace: checkmk-agent
+

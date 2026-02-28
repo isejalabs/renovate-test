@@ -4,8 +4,8 @@ kind: Kustomization
 components:
   - ../../../../../_components/poc
 
-resources:
-  - ../../base
+# resources:
+#   - ../../base
 
 generators:
   - ./helm
