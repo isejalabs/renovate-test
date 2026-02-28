@@ -3,18 +3,27 @@
   "semanticCommitScope": "{{parentDir}}",
   "packageRules": [
     {
-      "description": "add semantic commit scope for terragrunt environments",
+      "description": "add semantic commit scope for terragrunt environments, which are in the format terragrunt/<1account>/<2region>/<3env>/<4module>/",
       "matchFileNames": [
         "terragrunt/*/*/**"
       ],
       "semanticCommitScope": "{{ lookup (split packageFileDir '/') 3 }}/{{ lookup (split packageFileDir '/') 4 }}"
     },
     {
-      "description": "add semantic commit scope for k8s with helm subdir",
+      "description": "add semantic commit scope for the kustomize base, which is in the format k8s/<1project>/<2app>/<3base>/(helm)?/",
       "matchFileNames": [
-        "k8s/**/helm/*"
+        "k8s/*/*/base/*",
+        "k8s/*/*/base/helm/*"
       ],
-      "semanticCommitScope": "{{ lookup (split packageFileDir '/') 4 }}/{{ lookup (split packageFileDir '/') 3 }}"
+      "semanticCommitScope": "{{ lookup (split packageFileDir '/') 3 }}/{{ lookup (split packageFileDir '/') 2 }}"
+    },
+    {
+      "description": "add semantic commit scope for a kustomize overlay, which is in the format k8s/<1project>/<2app>/envs/<4env>/(helm)?/",
+      "matchFileNames": [
+        "k8s/*/*/envs/*/*"
+        "k8s/*/*/envs/helm/*"
+      ],
+      "semanticCommitScope": "{{ lookup (split packageFileDir '/') 4 }}/{{ lookup (split packageFileDir '/') 2 }}"
     },
   ]
 }
