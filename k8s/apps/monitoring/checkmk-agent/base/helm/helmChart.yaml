@@ -20,7 +20,7 @@ valuesInline:
       limits:
         cpu: 100m
         memory: 120Mi
-  foo: 1.9.0 # renovate: helm=checkmk-kube-agent registry=https://checkmk.github.io/checkmk_kube_agent
+  foo: 1.9.0 # renovate: helm=checkmk registry=https://checkmk.github.io/checkmk_kube_agent
 
   nodeCollector:
     # collect metrics also on control plane nodes
