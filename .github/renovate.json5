@@ -73,4 +73,5 @@
     },
   ],
   platformAutomerge: true,
+  commitMessageAction: "{{{updateType}}} update",
 }
