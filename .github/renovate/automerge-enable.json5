@@ -22,5 +22,6 @@
       ],
     },
   ],
+  automergeType: "branch",
   platformAutomerge: true,
 }
