@@ -6,7 +6,7 @@ resources:
 
 helmCharts:
   - name: checkmk
-    version: 1.9.0
+    version: 1.10.0
     repo: https://checkmk.github.io/checkmk_kube_agent
     releaseName: "checkmk-kube-agent"
     namespace: checkmk-agent
