@@ -3,7 +3,6 @@ pull_request_rules:
   - name: Automatic Merge for HEAD environment
     conditions:
       - label=env:head            # PR must have this label
-      - files~=^k8s/              # Files changed must be in the 'k8s/' folder
     actions:
       merge:
         method: squash            # Choose  merge, squash or rebase
