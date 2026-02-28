@@ -6,13 +6,19 @@
         'digest',
         'pinDigest',
       ],
-      automerge: true,
+      "automerge": true,
+      "addLabels": [
+        "automerge:on"
+      ],
     },
     {
       matchDepTypes: [
         'devDependencies',
       ],
-      automerge: true,
+      "automerge": true,
+      "addLabels": [
+        "automerge:on"
+      ],
     },
   ],
   platformAutomerge: true,
