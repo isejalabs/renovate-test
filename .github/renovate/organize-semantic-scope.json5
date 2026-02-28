@@ -9,5 +9,12 @@
       ],
       "semanticCommitScope": "{{ lookup (split packageFileDir '/') 3 }}/{{ lookup (split packageFileDir '/') 4 }}"
     },
+    {
+      "description": "add semantic commit scope for k8s with helm subdir",
+      "matchFileNames": [
+        "k8s/**/helm/*"
+      ],
+      "semanticCommitScope": "{{ lookup (split packageFileDir '/') 4 }}/{{ lookup (split packageFileDir '/') 3 }}"
+    },
   ]
 }
