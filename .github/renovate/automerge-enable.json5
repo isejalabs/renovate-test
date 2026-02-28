@@ -8,18 +8,12 @@
         "patch",
       ],
       "automerge": true,
-      "addLabels": [
-        "automerge:on"
-      ],
     },
     {
       matchDepTypes: [
         'devDependencies',
       ],
       "automerge": true,
-      "addLabels": [
-        "automerge:on"
-      ],
     },
   ],
   automergeType: "branch",
