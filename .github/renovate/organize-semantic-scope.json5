@@ -10,18 +10,18 @@
       "semanticCommitScope": "{{ lookup (split packageFileDir '/') 3 }}/{{ lookup (split packageFileDir '/') 4 }}"
     },
     {
-      "description": "add semantic commit scope for the kustomize base, which is in the format k8s/<1project>/<2app>/<3base>/(helm)?/",
+      "description": "add semantic commit scope for the kustomize base, which is in the format k8s/<1project>/<2ns>/<3app>/<4base>/(helm)?/",
       "matchFileNames": [
-        "k8s/*/*/base/*"
+        "k8s/*/*/*/base/*"
       ],
-      "semanticCommitScope": "{{ lookup (split packageFileDir '/') 3 }}/{{ lookup (split packageFileDir '/') 2 }}"
+      "semanticCommitScope": "{{ lookup (split packageFileDir '/') 4 }}/{{ lookup (split packageFileDir '/') 3 }}"
     },
     {
-      "description": "add semantic commit scope for a kustomize overlay, which is in the format k8s/<1project>/<2app>/envs/<4env>/(helm)?/",
+      "description": "add semantic commit scope for a kustomize overlay, which is in the format k8s/<1project>/<2ns>/<3app>/envs/<5env>/(helm)?/",
       "matchFileNames": [
-        "k8s/*/*/envs/*/*"
+        "k8s/*/*/*/envs/*/*"
       ],
-      "semanticCommitScope": "{{ lookup (split packageFileDir '/') 4 }}/{{ lookup (split packageFileDir '/') 2 }}"
+      "semanticCommitScope": "{{ lookup (split packageFileDir '/') 5 }}/{{ lookup (split packageFileDir '/') 3 }}"
     },
   ]
 }
