@@ -3,8 +3,9 @@
   packageRules: [
     {
       matchUpdateTypes: [
-        'digest',
-        'pinDigest',
+        "digest",
+        "pinDigest",
+        "patch",
       ],
       "automerge": true,
       "addLabels": [
