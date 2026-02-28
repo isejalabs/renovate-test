@@ -1,9 +1,9 @@
 queue_rules: []
 pull_request_rules:
-  - name: Automatischer Merge für HEAD environment
+  - name: Automatic Merge for HEAD environment
     conditions:
-      - label=env:head             # PR muss dieses Label haben
-      - files~=^k8s/               # Alle geänderten Dateien müssen im Ordner 'docs/' liegen
+      - label=env:head             # PR must have this label
+      - files~=^k8s/               # Files changed must be in the 'k8s/' folder
     actions:
       merge:
-        method: squash             # Wähle merge, squash oder rebase
+        method: squash             # Choose  merge, squash or rebase
