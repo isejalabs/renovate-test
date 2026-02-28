@@ -3,6 +3,8 @@
   extends: [
     ":disableRateLimiting",
     "config:best-practices",
+    "github>isejalabs/renovate-test//.github/renovate/automerge-enable.json5",
+    "github>isejalabs/renovate-test//.github/renovate/automerge-disable.json5",
     "github>isejalabs/renovate-test//.github/renovate/labels.json5",
     "github>isejalabs/renovate-test//.github/renovate/organize-semantic-scope.json5",
     "github>isejalabs/renovate-test//.github/renovate/pin-versions.json5",
@@ -58,20 +60,6 @@
       ],
       versioning: 'regex:^(?<compatibility>[a-z]*-|v)?(?<major>\\d+)\\.(?<minor>d+)\\.(?<patch>\\d+)?(?:[\\.-]?(?<build>.*))?$',
     },
-    {
-      matchUpdateTypes: [
-        'digest',
-        'pinDigest',
-      ],
-      automerge: true,
-    },
-    {
-      matchDepTypes: [
-        'devDependencies',
-      ],
-      automerge: true,
-    },
   ],
-  platformAutomerge: true,
   commitMessageAction: "{{{updateType}}} up.",
 }
