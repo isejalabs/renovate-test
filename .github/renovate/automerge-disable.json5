@@ -5,8 +5,8 @@
       "description": "disable automerge for specific packages",
       "matchPackageNames": [
         "cilium",
-        "docker.io/mongo",
-        "ghcr.io/linuxserver/unifi-network-application",
+        "NOT-docker.io/mongo",
+        "NOT-ghcr.io/linuxserver/unifi-network-application",
         "kubernetes-sigs/gateway-api",
         "kubernetes/kubernetes",
         "sidero/talos"
