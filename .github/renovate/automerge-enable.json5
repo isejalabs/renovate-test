@@ -8,7 +8,6 @@
         "patch",
       ],
       "automerge": true,
-      automergeType: "branch",
     },
     {
       matchDepTypes: [
@@ -18,5 +17,4 @@
     },
   ],
   automergeType: "branch",
-  platformAutomerge: true,
 }
