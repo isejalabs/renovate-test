@@ -2,11 +2,21 @@
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   packageRules: [
     {
+      allowedVersions: '<=8.0',
+      description: 'keep mongodb at v8.0 due to unifi-network-controller, and for omitting minor updates with (unnecessary) changes',
       matchPackageNames: [
         'docker.io/mongo',
       ],
-      allowedVersions: '<=8.0',
-      description: 'keep mongodb at v8.0 due to unifi-network-controller, and for omitting minor updates with (unnecessary) changes',
+    },
+    {
+      allowedVersions: '>=8.0',
+      description: 'allow recent versions of mongodb for HEAD environment, i.e. like "latest" updates',
+      matchFileNames: [
+        'k8s/**/envs/HEAD/**',
+      ],
+      matchPackageNames: [
+        'docker.io/mongo',
+      ],
     },
   ],
 }
