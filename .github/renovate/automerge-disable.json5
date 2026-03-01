@@ -19,7 +19,9 @@
     {
       "description": "disable automerge for specific file paths",
       "matchFileNames": [
-        "terragrunt/**"
+        ".github/**",
+        "terragrunt/**",
+        "tofu/**",
       ],
       "automerge": false,
       "addLabels": [
