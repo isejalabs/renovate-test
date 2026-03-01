@@ -34,8 +34,6 @@
   kubernetes: {
     managerFilePatterns: [
       '/(^|/)k8s/.+\\.yaml$/',
-      '/(^|/)regex/.+\\.yaml$/',
-      '/(^|/)vanilla/.+\\.yaml$/',
     ],
   },
   customManagers: [
