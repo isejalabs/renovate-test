@@ -10,9 +10,10 @@
     },
     {
       allowedVersions: '>=8.0',
-      description: 'allow recent versions of mongodb for HEAD environment, i.e. like "latest" updates',
+      description: 'allow recent versions of mongodb for HEAD and PoC environment, i.e. like "latest" updates',
       matchFileNames: [
-        'k8s/**/envs/HEAD/**',
+        'k8s/**/envs/head/**',
+        'k8s/**/envs/poc/**',
       ],
       matchPackageNames: [
         'docker.io/mongo',
