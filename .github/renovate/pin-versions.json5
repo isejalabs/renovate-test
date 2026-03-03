@@ -11,12 +11,34 @@
     {
       allowedVersions: '>=8.0',
       description: 'allow recent versions of mongodb for HEAD and PoC environment, i.e. like "latest" updates',
+      matchPackageNames: [
+        'docker.io/mongo',
+      ],
       matchFileNames: [
         'k8s/**/envs/head/**',
         'k8s/**/envs/poc/**',
+        'terragrunt/**/head/**,
+        'terragrunt/**/poc/**,
       ],
+    },
+    {
+      allowedVersions: '<=1.34',
+      description: 'keep kubernetes at an older version due to checkmk',
       matchPackageNames: [
-        'docker.io/mongo',
+        'kubernetes/kubernetes',
+      ],
+    },
+    {
+      allowedVersions: '>=1.35',
+      description: 'allow recent versions of kubernetes for HEAD and PoC environment, i.e. like "latest" updates',
+      matchPackageNames: [
+        'kubernetes/kubernetes',
+      ],
+      matchFileNames: [
+        'k8s/**/envs/head/**',
+        'k8s/**/envs/poc/**',
+        'terragrunt/**/head/**,
+        'terragrunt/**/poc/**,
       ],
     },
   ],
