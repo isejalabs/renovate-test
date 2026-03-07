@@ -3,6 +3,7 @@
   extends: [
     ":disableRateLimiting",
     "config:best-practices",
+    "mergeConfidence:all-badges",
     "github>isejalabs/renovate-test//.github/renovate/automerge-enable.json5",
     "github>isejalabs/renovate-test//.github/renovate/automerge-disable.json5",
     "github>isejalabs/renovate-test//.github/renovate/labels.json5",
