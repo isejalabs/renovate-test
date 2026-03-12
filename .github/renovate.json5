@@ -61,7 +61,7 @@
     },
   ],
   commitMessageAction: "{{{updateType}}}",
-  "labels": [
+  addLabels: [
     "pr-type:renovate"
   ],
 }
