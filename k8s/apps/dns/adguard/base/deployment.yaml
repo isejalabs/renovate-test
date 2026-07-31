@@ -1,0 +1,102 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adguard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adguard
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: adguard
+    spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+        - name: copy-base-config
+          image: busybox@sha256:fd8d9aa63ba2f0982b5304e1ee8d3b90a210bc1ffb5314d980eb6962f1a9715d
+          command:
+            [
+              "cp",
+              "/tmp/AdGuardHome.yaml",
+              "/opt/adguardhome/conf/AdGuardHome.yaml",
+            ]
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: config
+              mountPath: /tmp/AdGuardHome.yaml
+              subPath: AdGuardHome.yaml
+            - name: config-folder
+              mountPath: /opt/adguardhome/conf
+        - name: append-users
+          image: busybox@sha256:fd8d9aa63ba2f0982b5304e1ee8d3b90a210bc1ffb5314d980eb6962f1a9715d
+          command:
+            [
+              "sh",
+              "-c",
+              "cat /tmp/users.yaml >> /opt/adguardhome/conf/AdGuardHome.yaml",
+            ]
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: users
+              mountPath: /tmp/users.yaml
+              subPath: users.yaml
+            - name: config-folder
+              mountPath: /opt/adguardhome/conf
+      containers:
+        - name: adguard
+          image: docker.io/adguard/adguardhome:v0.107.78@sha256:1ea34eafe5dc691007946e8eaab7bf46b0de9412f39213d8c06e48b53bf9a6c5
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+          # capabilities:
+          #   drop: [ "ALL" ]
+          ports:
+            - name: dns-tcp
+              containerPort: 53
+              protocol: TCP
+            - name: dns-udp
+              containerPort: 53
+              protocol: UDP
+            - name: dhcp
+              containerPort: 67
+              protocol: UDP
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 50m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          volumeMounts:
+            - name: config-folder
+              mountPath: /opt/adguardhome/conf
+            - name: work-folder
+              mountPath: /opt/adguardhome/work
+      volumes:
+        - name: config
+          configMap:
+            name: adguard-config
+        - name: users
+          secret:
+            secretName: users
+        - name: config-folder
+          emptyDir: {}
+        - name: work-folder
+          emptyDir: {}
