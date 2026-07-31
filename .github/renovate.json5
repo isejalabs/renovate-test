@@ -1,63 +1,55 @@
 {
-  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: [
     ":disableRateLimiting",
     "config:best-practices",
-    "mergeConfidence:all-badges",
-    "github>isejalabs/renovate-test//.github/renovate/automerge-enable.json5",
-    "github>isejalabs/renovate-test//.github/renovate/automerge-disable.json5",
-    "github>isejalabs/renovate-test//.github/renovate/labels.json5",
-    "github>isejalabs/renovate-test//.github/renovate/organize-semantic-scope.json5",
-    "github>isejalabs/renovate-test//.github/renovate/pin-versions.json5",
-    "github>isejalabs/renovate-test//.github/renovate/version-scheme.json5",
+    "github>isejalabs/homelab//.github/renovate/automerge-enable.json5",
+    "github>isejalabs/homelab//.github/renovate/automerge-disable.json5",
+    "github>isejalabs/homelab//.github/renovate/labels.json5",
+    "github>isejalabs/homelab//.github/renovate/organize-semantic-scope.json5",
+    "github>isejalabs/homelab//.github/renovate/pin-versions.json5",
+    "github>isejalabs/homelab//.github/renovate/version-scheme.json5",
   ],
   rebaseWhen: 'conflicted',
-  separateMinorPatch: true,
-  ignorePaths: [
-    '_attic/**',
-  ],
-  semanticCommitScope: '{{parentDir}}',
+  ignorePaths: ["_attic/**"],
   terragrunt: {
-    versioning: 'regex:^((?<compatibility>.*)-v|v*)(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$',
+    versioning: "regex:^((?<compatibility>.*)-v|v*)(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$",
   },
-  additionalBranchPrefix: '{{packageFileDir}}/',
-  prBodyColumns: [
-    'Package',
-    'Package file',
-    'Update',
-    'Change',
-  ],
-  kustomize: {
-    managerFilePatterns: [
-      '/(^|/)kustomization\\.ya?ml(\\.j2)?$/',
-    ],
-  },
+  additionalBranchPrefix: "{{packageFileDir}}/",
+  prBodyColumns: ["Package", "Package file", "Update", "Change"],
+  separateMinorPatch: true,
   kubernetes: {
-    managerFilePatterns: [
-      '/(^|/)k8s/.+\\.yaml$/',
-    ],
+    managerFilePatterns: ["/(^|/)k8s/.+\\.yaml$/"],
   },
   customManagers: [
     {
-      customType: 'regex',
+      customType: "regex",
       managerFilePatterns: [
-        '/\\.hcl$/',
-        '/\\.tf$/',
-        '/\\.tftpl$/',
-        '/\\.yaml$/',
-        '/\\.sh$/',
+        "/\\.hcl$/",
+        "/\\.tf$/",
+        "/\\.tftpl$/",
+        "/\\.yaml$/",
+        "/\\.sh$/",
       ],
       matchStrings: [
-        '(?<currentValue>[\\w+\\.\\-]*)[\'",;]*\\s*#\\s?renovate: (?<datasource>\\S+)=(?<depName>\\S+)\\s?(registry=(?<registryUrl>\\S+))?\\s?(versioning=(?<versioning>\\S+))?',
+        "(?<currentValue>[\\w+\\.\\-]*)['\",;]*\\s*#\\s?renovate: (?<datasource>\\S+)=(?<depName>\\S+)\\s?(registry=(?<registryUrl>\\S+))?\\s?(versioning=(?<versioning>\\S+))?",
       ],
     },
-  ],
-  packageRules: [
     {
-      matchPackageNames: [
-        '/^lscr.io\\/linuxserver\\/unifi-network-application\\//',
+      customType: "regex",
+      managerFilePatterns: ["/(^|/)kustomization\\.ya?ml$/"],
+      matchStrings: [
+        "https://github\\.com/(?<depName>.*/.*?)/releases/download/(?<currentValue>.*?)/",
       ],
-      versioning: 'regex:^(?<compatibility>[a-z]*-|v)?(?<major>\\d+)\\.(?<minor>d+)\\.(?<patch>\\d+)?(?:[\\.-]?(?<build>.*))?$',
+      datasourceTemplate: "github-releases",
+    },
+    {
+      customType: "regex",
+      managerFilePatterns: ["/(^|/)kustomization\\.ya?ml$/"],
+      matchStrings: [
+        "https://raw\\.githubusercontent\\.com/(?<depName>[^/]*/[^/]*)/(?<currentValue>.*?)/",
+      ],
+      datasourceTemplate: "github-tags",
     },
   ],
   commitMessageAction: "{{{updateType}}}",
