@@ -9,6 +9,4 @@ resources:
   - helmrepository.yaml
   - helmrepository ns_.yaml
   - helmrelease.yaml
-  - helmrelease full.yaml
-  - helmrelease full+ns_.yaml
   - http-route.yaml
