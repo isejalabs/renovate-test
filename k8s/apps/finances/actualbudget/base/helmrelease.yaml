@@ -8,13 +8,13 @@ spec:
   interval: 1h
   chart:
     spec:
-      chart: *name
+      chart: actualbudget
       version: 1.9.1
       sourceRef:
         kind: HelmRepository
-        name: *name
-        namespace: *name
-  releaseName: *name
+        name: actualbudget
+        namespace: actualbudget
+  releaseName: actualbudget
   values:
     image:
       tag: "26.7.0"
