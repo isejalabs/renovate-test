@@ -12,7 +12,7 @@ spec:
       version: 1.9.1
       sourceRef:
         kind: HelmRepository
-        name: actualbudget
+        name: community-charts
         namespace: actualbudget
   releaseName: actualbudget
   values:
