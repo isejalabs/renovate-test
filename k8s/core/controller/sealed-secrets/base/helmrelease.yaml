@@ -18,7 +18,6 @@ spec:
         kind: HelmRepository
         name: bitnamicharts
         namespace: sealed-secrets
-  releaseName: sealed-secrets-controller
   valuesFrom:
     - kind: ConfigMap
       name: base-values
