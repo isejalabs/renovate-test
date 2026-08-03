@@ -13,7 +13,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: community-charts
-        namespace: &name
+        namespace: *name
   releaseName: *name
   values:
     image:
