@@ -9,14 +9,14 @@ spec:
   chart:
     spec:
       chart: *name
-      version: 1.9.1
+      version: 1.9.1    # renovate: helm=actualbudget registry=https://community-charts.github.io/helm-charts
       sourceRef:
         kind: HelmRepository
         name: community-charts
         namespace: *name
   values:
     image:
-      tag: "26.7.0"
+      tag: "26.7.0" # renovate: docker=ghcr.io/actualbudget/actual-server versioning=loose
 
     persistence:
       enabled: true
