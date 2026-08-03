@@ -14,7 +14,6 @@ spec:
         kind: HelmRepository
         name: *name
         namespace: *name
-  releaseName: *name
   values:
     clusterCollector:
       resources:

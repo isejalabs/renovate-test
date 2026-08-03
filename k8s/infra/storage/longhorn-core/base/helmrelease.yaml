@@ -14,7 +14,6 @@ spec:
         kind: HelmRepository
         name: longhorn
         namespace: longhorn-system
-  releaseName: longhorn
   values:
     csi:
       # -- Replica count of the CSI Attacher. When unspecified, Longhorn uses the default value ("3").
