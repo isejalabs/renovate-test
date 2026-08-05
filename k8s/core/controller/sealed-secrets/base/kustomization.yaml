@@ -4,8 +4,8 @@ kind: Kustomization
 namespace: sealed-secrets
 
 resources:
-  - helmrepository.yaml
   - helmrelease.yaml
+  - ocirepository.yaml
 
 configMapGenerator:
   - name: base-values
