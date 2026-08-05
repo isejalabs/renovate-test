@@ -8,7 +8,7 @@ spec:
   interval: 1h
   chart:
     spec:
-      chart: *name
+      chart: checkmk
       version: 1.11.0
       sourceRef:
         kind: HelmRepository

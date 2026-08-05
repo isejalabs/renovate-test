@@ -14,4 +14,4 @@ instance:
     url: "https://github.com/isejalabs/homelab"
     ref: "refs/heads/issue/808_fluxcd"
     path: "k8s/infra/controller/fluxcd/cluster/envs/REPLACE_ME"
-    interval: 10m
+    interval: 1m
