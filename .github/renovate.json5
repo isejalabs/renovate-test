@@ -8,6 +8,7 @@
     "github>isejalabs/renovate-test//.github/renovate/labels.json5",
     "github>isejalabs/renovate-test//.github/renovate/organize-semantic-scope.json5",
     "github>isejalabs/renovate-test//.github/renovate/pin-versions.json5",
+    "github>isejalabs/renovate-test//.github/renovate/renames.json5",
     "github>isejalabs/renovate-test//.github/renovate/version-scheme.json5",
   ],
   rebaseWhen: 'conflicted',

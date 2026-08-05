@@ -1,0 +1,33 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  "packageRules": [
+    {
+      "matchPackageNames": ["quay.io/jetstack/charts/cert-manager"],
+      "commitMessageTopic": "cert-manager"
+    },
+    {
+      "matchPackageNames": ["quay.io/cilium/charts/cilium"],
+      "commitMessageTopic": "cilium"
+    },
+    {
+      "matchPackageNames": ["ghcr.io/controlplaneio-fluxcd/charts/flux-instance"],
+      "commitMessageTopic": "flux-instance"
+    },
+    {
+      "matchPackageNames": ["ghcr.io/controlplaneio-fluxcd/charts/flux-operator"],
+      "commitMessageTopic": "flux-operator"
+    },
+    {
+      "matchPackageNames": ["ghcr.io/home-operations/charts-mirror/metrics-server"],
+      "commitMessageTopic": "metrics-server"
+    },
+    {
+      "matchPackageNames": ["ghcr.io/sergelogvinov/charts/proxmox-csi-plugin"],
+      "commitMessageTopic": "proxmox-csi-plugin"
+    },
+    {
+      "matchPackageNames": ["registry-1.docker.io/bitnamicharts/sealed-secrets"],
+      "commitMessageTopic": "sealed-secrets"
+    },
+  ]
+}
