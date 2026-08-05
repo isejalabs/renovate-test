@@ -5,4 +5,5 @@ metadata:
 spec:
   chart:
     spec:
-      version: "1.12.0"
+
+      version: "1.12.0"   # renovate: helm=longhorn registry=https://charts.longhorn.io
