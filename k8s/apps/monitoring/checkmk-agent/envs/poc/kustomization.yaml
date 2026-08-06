@@ -8,5 +8,4 @@ resources:
   - ../../base
 
 patches:
-  - path: patches/helm-version.yaml
   - path: patches/log-level.yaml

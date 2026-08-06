@@ -16,4 +16,5 @@ spec:
   dependsOn:
     - name: cilium
     - name: gateway-api
+    - name: longhorn
     - name: sealed-secrets

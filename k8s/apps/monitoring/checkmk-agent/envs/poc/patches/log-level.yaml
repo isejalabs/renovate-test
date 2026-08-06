@@ -3,9 +3,6 @@ kind: HelmRelease
 metadata:
   name: &name checkmk-kube-agent
 spec:
-  chart:
-    spec:
-      version: 1.6.0
   values:
     clusterCollector:
       # can be: "debug", "info", "warning" (default), "critical"
