@@ -16,7 +16,7 @@ spec:
         namespace: *name
   values:
     image:
-      tag: "26.8.0" # renovate: docker=ghcr.io/actualbudget/actual-server versioning=loose
+      tag: "26.8.1" # renovate: docker=ghcr.io/actualbudget/actual-server versioning=loose
 
     persistence:
       enabled: true
