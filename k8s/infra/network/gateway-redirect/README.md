@@ -1,1 +1,0 @@
-Separate kustomize base in order to prevent domain name rewrite errors because the `HTTPRoute` does not contain any `hostname` specification.
